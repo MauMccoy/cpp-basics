@@ -1,7 +1,12 @@
 {
     "files.associations": {
         "iostream": "cpp",
-        "__functional_03": "cpp",
-        "functional": "cpp"
+        "iosfwd": "cpp",
+        "algorithm": "cpp",
+        "limits": "cpp",
+        "istream": "cpp",
+        "iomanip": "cpp",
+        "typeinfo": "cpp",
+        "ios": "cpp"
     }
 }
