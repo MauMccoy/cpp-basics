@@ -208,14 +208,14 @@ int main(){
         
     }
 
+/* 
+// Tabulated Output format
+*/
     cout << line << '\n' << sep
               << setw(name_width) << "ID" << sep << setw(name_width) << "Name" << sep
               << setw(dbl_width) << "Gross Pay" << sep << setw(dbl_width) << "Tax" << sep
               << setw(dbl_width) << "net pay" << sep << '\n' << line << '\n' ;
 
-/* 
-// Tabulated Output format
-*/
     for( int n = 0 ; n < 4 ; n++ )
     {
         cout << sep << setw(name_width) << employee[n].id << sep << setw(name_width) << employee[n].name << sep

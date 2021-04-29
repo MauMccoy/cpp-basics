@@ -8,5 +8,6 @@
         "iomanip": "cpp",
         "typeinfo": "cpp",
         "ios": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
