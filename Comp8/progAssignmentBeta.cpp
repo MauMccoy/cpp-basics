@@ -1,12 +1,13 @@
 /* 
  *      Author: Mauricio McCoy
  *      Title : Programming Assignment 8
- *      Completed
+ *      Complete
  * 
  *      This program uses functions, structures and pointers to creade a gradebook.
- *      The user is allowed to specify the number of students in the class. Then is asked for student names and grade inputs.
- *      After aquiring the names and grades from the user, the programs sorts the grades of the class in ascending order in parallel to their corresponding name..
+ *      The user is allowed to specify the number of students in the class. Then is asked for grade inputs.
+ *      After aquiring the grades from the user, the programs sorts the grades of the class in ascending order.
  *      Calculates the average. And displays the grades. Main actions are functions.
+ * 
  */
 #include <iostream>
 #include <stdio.h>
@@ -18,8 +19,6 @@ using namespace std;
 /* STRUCTURES */
 struct Student
 {
-    int id;
-    char name[15];
     float grade;
 };
 
@@ -41,13 +40,13 @@ int main ()
     struct Student array;
     
     /* FUNCTION CALLS */
-    getGrades(&array, numStudents, maxGrade, minGrade);         /* FUNCTION 1 (COMPLETE)*/    
+    getGrades(&array, numStudents, maxGrade, minGrade);                         /* FUNCTION 1 (COMPLETE)*/    
 
-    sortUp(&array, numStudents);            /* FUNCTION 2 (COMPLETE)*/
+    sortUp(&array, numStudents);                            /* FUNCTION 2 (COMPLETE)*/
 
     average = averageGrade(&array, numStudents, average);   /* FUNCTION 3 (COMPLETE) */
 
-    displayGrades(&array, numStudents, average);     /* FUNCTION 4 (COMPLETE)*/
+    displayGrades(&array, numStudents, average);            /* FUNCTION 4 (COMPLETE)*/
 }
 
 /* FUNCTION DECLARATIONS */
@@ -55,6 +54,7 @@ int main ()
 void getGrades(struct Student *array, int &numStudents, float &maxGrade, float &minGrade)
 {
     float tempGrade;
+    
     /* STUDENT TOTAL INPUT */
     printf("Enter the number of students in your class: ");
     scanf("%d", &numStudents);
@@ -63,10 +63,8 @@ void getGrades(struct Student *array, int &numStudents, float &maxGrade, float &
     /* GRADE INPUT */
     for(int i = 0; i < numStudents; ++i)
     {
-        printf("Enter Name: ");
-        scanf("%s",array[i].name);
         printf("Enter Grade: ");
-        scanf("%f", &array[i].grade); 
+        tempGrade = scanf("%f", &array[i].grade);
         if (array[i].grade < minGrade or array[i].grade > maxGrade)
         {
             while (array[i].grade < minGrade or array[i].grade > maxGrade)
@@ -76,7 +74,9 @@ void getGrades(struct Student *array, int &numStudents, float &maxGrade, float &
                 tempGrade = scanf("%f", &array[i].grade);
             }
             
-        }               
+        }
+        
+
     }  
 }
 
@@ -96,13 +96,6 @@ void sortUp(struct Student *array, int &numStudents)
 				placeholder  = array[i].grade;
 				array[i].grade = array[j].grade;
 				array[j].grade = placeholder;
-
-                // array[i].name = array[j].name;
-                char *temp = (char *)malloc((strlen(array[i].name) + 1) * sizeof(char));
-                strcpy(temp, array[i].name);
-                strcpy(array[i].name, array[j].name);
-                strcpy(array[j].name, temp);
-                free(temp);
 			}
 		}
 	}    
@@ -128,7 +121,7 @@ void displayGrades(struct Student *array, int &numStudents, float &average)
     line();
     for(int i = 0; i < numStudents; ++i)
     {    
-        cout << "\nName: \t" << setw(10) << array[i].name << "\t" << setw(10) << right << array[i].grade <<"\n\n";
+        cout << setw(34) << right << array[i].grade <<"\n\n";
     };
     line();
     cout << "\nAverage: \t" << setprecision(4) << setw(18) << average << "\n\n";
